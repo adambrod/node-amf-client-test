@@ -13,7 +13,7 @@ var timeout = 5000;
 var methods = require('./amf-methods');
 
 // require the HTTP gateway server, ensuring relative paths are correct
-var server = require('../../node-amf/http-server');
+var server = require('../node_modules/amflib/node-amf/http-server');
 
 // start the server with the required params and gateway methods
 server.start( listenPort, listenHost, methods, timeout );
