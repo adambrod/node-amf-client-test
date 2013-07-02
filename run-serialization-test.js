@@ -1,19 +1,19 @@
 Amf = require('amflib/node-amf/amf.js');
+Util = require('util');
 
 try {
 
     var packet = Amf.packet();
-    packet.addMessage([289764372], 'testMethod', '/1');
+    packet.addMessage([{'bad-number':289764372, 'string-number':'289764372'}], 'testMethod', '/1');
     
-    s = packet.serialize()
+    ser = packet.serialize();
+    console.log("Serialized packet:"+ser);
 
-    body = s
-
-    convertPacket = Amf.packet(body.toString());
+    convertPacket = Amf.packet(ser.toString());
     
     value = convertPacket.messages[0].value;
     
-    console.log("Value: " + value);
+    console.log("Value: " + Util.inspect(value));
 
 } catch (e) {
   console.error("Caught error:" + e)
