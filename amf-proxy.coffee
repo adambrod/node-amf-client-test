@@ -51,7 +51,6 @@ class AmfProxy
       #body = ''
       res.on 'data', (chunk) =>
         try
-          console.log "chunking: #{chunk}"
           body = BufferTools.concat(body, chunk)
           #body += chunk
         catch e
@@ -63,14 +62,9 @@ class AmfProxy
           error = "Problem fetching from origin.  Response code: #{res.statusCode}, body: #{res.body}"
         else
         
-          console.log "converting #{body.toString()}"
           convertBody = @iconv.convert(body).toString()
-          console.log "converted: #{@iconv.convert(body).toString()}"
-          #packet = Amf.packet(@iconv.convert(body).toString())
-          #packet = Amf.packet body.toString()
           convertPacket = Amf.packet convertBody.toString()
 
-          console.log "convertPacket: #{Util.inspect convertPacket, {depth:3}}"
 
           if !packet.messages? or packet.messages.length == 0
             sloppyErrorHandling packet
@@ -80,7 +74,6 @@ class AmfProxy
           if value?.rootCause || value?.faultString || value?.faultDetail
               sloppyErrorHandling value
 
-        console.log Util.inspect cb
         cb error, value
       
 
