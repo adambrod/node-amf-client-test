@@ -2,9 +2,10 @@ var AmfProxy, proxy;
 require('coffee-script');
 AmfProxy = require('./amf-proxy');
   
+// NOTE: change originAmfPort to 8081 if NOT using Charles Reverse Proxy
 proxy = new AmfProxy({
   originHost: "localhost",
-  originAmfPort: 8081,
+  originAmfPort: 8082,
   originAmfGatewayPath: "",
   originConnection: {
     maxSockets: 20
