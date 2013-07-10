@@ -3,7 +3,7 @@ node-amf-client-test
 
 Simple test app to flush out problems with node and amf
 
-# Steps to run using Java server (with Adobe's blazeds as the U29 deserializer)
+Steps to run using Java server (with Adobe's blazeds as the U29 deserializer)
 ```
 cd tomcat/bin
 ./catalina.sh run
@@ -15,7 +15,7 @@ INFO: Server startup in 1245 ms
 Server received: -247106540
 ```
 
-# Steps to run with Charles proxy as the AMF parser
+Steps to run with Charles proxy as the AMF parser
 Download and install Charles from http://www.charlesproxy.com/download/
 In Charles, setup a Reverse Proxy
 Menu: Proxy->Reverse Proxies->Add
